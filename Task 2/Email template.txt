@@ -1,0 +1,19 @@
+Subject: Urgent: Your Microsoft Account Requires Verification
+From: security@microsoft-support.com 
+Date: 24-06-2025
+
+Microsoft Account Security Alert
+
+Dear Valued User,
+
+We have detected unusual login attempts on your Microsoft account from a device in Germany (IP: 185.23.13.238). For your security, we’ve temporarily restricted access to your account.
+
+✅ Action Required: Verify your identity within 24 hours to avoid permanent suspension.
+
+👉 Click here to verify your account now:
+🔗 https://microsoft-account-secure.com/login 
+
+Note: If you did not initiate this request, secure your account immediately by following the steps above.
+
+Microsoft Security Team
+This is an automated message. Do not reply.

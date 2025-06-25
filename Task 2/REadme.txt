@@ -1,0 +1,6 @@
+
+
+The email (email template.txt) came from "security@microsoft-support.com" - this immediately raised my suspicions. I know Microsoft's real domain is "@microsoft.com," not "microsoft-support.com." Scammers often use slight variations like this to trick people.The email began with "Dear Valued User" instead of using my actual name. Microsoft always personalizes their emails with your account name. This generic greeting was a big red flag that this was a mass phishing attempt.
+
+Using MXToolbox's Email Header Analyzer, I discovered:
+The "From" address didn't match the actual sending server.The email failed SPF and DKIM authentication checks.The IP address didn't belong to Microsoft's known servers.The email urged me to click a link to "verify my account." Before clicking anything:I pasted the URL into VirusTotal, which confirmed it was a known phishing site.The link used HTTP (not secure HTTPS) which is never used for login pages.Created false urgency with "verify within 24 hours or your account will be suspended".Faked a security threat with "suspicious login from Germany".Used Microsoft's logo and branding to appear legitimate.
