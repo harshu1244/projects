@@ -5,6 +5,6 @@ I conducted a Network scan of the 192.168.110.0/24 subnet using Nessus and ident
 
 scan_report.pdf - Full Nessus vulnerability scan results
 
-mitigations.txt - Specific fixes for critical vulnerabilities
+mitigations.txt - Specific fixes for vulnerabilities
 
 Scan ss.png - Visual overview of scan results
