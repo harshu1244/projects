@@ -9,7 +9,7 @@ from zxcvbn import zxcvbn
 from nltk.corpus import words
 import nltk
 
-# Download NLTK words corpus if not already present
+
 try:
     nltk.data.find('corpora/words')
 except LookupError:
@@ -78,15 +78,15 @@ class WordlistGenerator:
         
         wordlist = set()
         
-        # Process each base word
+
         for word in base_words:
             if not word:
                 continue
                 
-            # Generate variations
+            
             variations = [word]
             
-            # Case variations
+       
             if use_upper:
                 variations.append(word.upper())
             if use_lower:
@@ -94,12 +94,11 @@ class WordlistGenerator:
             if use_upper and use_lower:
                 variations.append(word.capitalize())
             
-            # Leet speak variations
             if use_leet:
                 leet_variations = self._generate_leet_variations(word)
                 variations.extend(leet_variations)
             
-            # Add digits and special chars
+         
             for variation in variations.copy():
                 if use_digits:
                     for year in years:
@@ -113,7 +112,7 @@ class WordlistGenerator:
                     variations.append(f"{variation}#")
                     variations.append(f"{variation}$")
             
-            # Add to wordlist if within length constraints
+        
             for variant in variations:
                 if min_length <= len(variant) <= max_length:
                     wordlist.add(variant)
@@ -142,16 +141,16 @@ class PasswordToolGUI:
         self.create_widgets()
 
     def create_widgets(self):
-        # Notebook for tabs
+   
         self.notebook = ttk.Notebook(self.root)
         self.notebook.pack(fill='both', expand=True)
         
-        # Analysis Tab
+  
         self.analysis_frame = ttk.Frame(self.notebook)
         self.notebook.add(self.analysis_frame, text='Password Analysis')
         self.setup_analysis_tab()
         
-        # Wordlist Tab
+      
         self.wordlist_frame = ttk.Frame(self.notebook)
         self.notebook.add(self.wordlist_frame, text='Wordlist Generator')
         self.setup_wordlist_tab()
@@ -177,17 +176,17 @@ class PasswordToolGUI:
                   command=self.clear_analysis).pack(pady=5)
 
     def setup_wordlist_tab(self):
-        # Base words input
+        
         ttk.Label(self.wordlist_frame, text="Base Words (comma separated):").pack(pady=5)
         self.base_words_entry = ttk.Entry(self.wordlist_frame, width=50)
         self.base_words_entry.pack(pady=5)
         
-        # Years to append
+        
         ttk.Label(self.wordlist_frame, text="Years to append (comma separated):").pack(pady=5)
         self.years_entry = ttk.Entry(self.wordlist_frame, width=50)
         self.years_entry.pack(pady=5)
         
-        # Options frame
+      
         options_frame = ttk.Frame(self.wordlist_frame)
         options_frame.pack(pady=10)
         
@@ -206,7 +205,7 @@ class PasswordToolGUI:
         self.use_special_var = tk.IntVar(value=1)
         ttk.Checkbutton(options_frame, text="Use Special Chars", variable=self.use_special_var).grid(row=2, column=0, sticky='w')
         
-        # Length constraints
+       
         length_frame = ttk.Frame(self.wordlist_frame)
         length_frame.pack(pady=10)
         
@@ -220,11 +219,11 @@ class PasswordToolGUI:
         self.max_length.set(12)
         self.max_length.grid(row=0, column=3, padx=5)
         
-        # Generate button
+        
         ttk.Button(self.wordlist_frame, text="Generate Wordlist", 
                   command=self.generate_wordlist).pack(pady=10)
         
-        # Results and export
+        
         self.wordlist_text = tk.Text(self.wordlist_frame, height=15, width=60)
         self.wordlist_text.pack(pady=10)
         
@@ -304,9 +303,9 @@ class PasswordToolGUI:
         if file_path:
             try:
                 with open(file_path, 'w') as f:
-                    # Get all words (not just the preview)
+                    
                     words = self.wordlist_text.get(1.0, tk.END).split('\n')
-                    # Skip the first line (header) and join the rest
+                    
                     f.write('\n'.join(words[2:]))
                 messagebox.showinfo("Success", f"Wordlist saved to {file_path}")
             except Exception as e:
@@ -334,11 +333,11 @@ def cli_main():
     parser = argparse.ArgumentParser(description='Password Strength Analyzer & Wordlist Generator')
     subparsers = parser.add_subparsers(dest='command', required=True)
     
-    # Analysis command
+   
     analyze_parser = subparsers.add_parser('analyze', help='Analyze password strength')
     analyze_parser.add_argument('password', help='Password to analyze')
     
-    # Wordlist command
+   
     wordlist_parser = subparsers.add_parser('generate', help='Generate custom wordlist')
     wordlist_parser.add_argument('-b', '--base', required=True, help='Base words (comma separated)')
     wordlist_parser.add_argument('-y', '--years', help='Years to append (comma separated)')
